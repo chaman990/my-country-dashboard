@@ -1,36 +1,14 @@
 // components/SearchCountryByName.tsx
-import React, { useState } from "react";
-import { Country } from "../hooks/useCountryData";
+import React from "react";
 
 interface SearchCountryByNameProps {
-  setFilteredData: (data: Country[]) => void;
-  originalData: Country[];
+  searchTerm: string;
+  onSearch: (term: string) => void;
 }
 
-const SearchCountryByName: React.FC<SearchCountryByNameProps> = ({ setFilteredData, originalData }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
+const SearchCountryByName: React.FC<SearchCountryByNameProps> = ({ searchTerm, onSearch }) => {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const term = event.target.value.toLowerCase();
-    setSearchTerm(term);
-    
-    console.warn({
-        originalData
-    });
-    
-    if (term === "") {
-      setFilteredData(originalData); // Reset to original data if search term is empty
-    } else {
-      const filtered = originalData?.filter(
-        (country) =>
-          country.name.common.toLowerCase().includes(term) ||
-          (country.capital && country.capital[0].toLowerCase().includes(term))
-      );
-      if(filtered){
-
-          setFilteredData(filtered);
-      }
-    }
+    onSearch(event.target.value);
   };
 
   return (

@@ -13,6 +13,7 @@ const FilterCountriesByRegion: React.FC<FilterCountriesByRegionProps> = ({ regio
 
   return (
     <div>
+      <label>Filter by Region: </label>
       <select onChange={handleRegionChange}>
         <option value="">All Regions</option>
         {regions.map((region, index) => (
