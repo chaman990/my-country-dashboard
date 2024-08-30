@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
   return (
     <ErrorBoundary>
       <FilterCountriesByRegion regions={regions} onFilter={handleRegionFilter} />
-      <SearchCountryByName searchTerm={searchTerm} onSearch={handleSearch} originalData={originalData} />
+      <SearchCountryByName searchTerm={searchTerm} onSearch={handleSearch} originalData={originalData}  setFilteredData={setFilteredData}/>
       <SortByPopulation onSort={handleSort} />
       <div className="grid">
         {filteredData.map((country) => (

@@ -8,6 +8,10 @@ export const useSearch = (originalData: Country[], setFilteredData: (data: Count
   const handleSearch = (term: string) => {
     setSearchTerm(term.toLowerCase());
 
+    console.warn({
+      setFilteredData
+    });
+    
     if (term === "") {
       setFilteredData(originalData); // Reset to original data if search term is empty
     } else {
